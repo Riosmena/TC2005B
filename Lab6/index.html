@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type=" text/css" href="estilos.css">
+    <link rel="icon" href="Img/icono.jpg">
+    <title>Contraseñas</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Verificar contraseñas</h1>
+        <form name="pwords" onsubmit="return verify()">
+            <td>Ingresar contraseña:</td>
+            <br>
+            <input type="password" id="pword1" value="">
+            <br>
+            <td>Vuelve a ingresar contraseña:</td>
+            <br>
+            <input type="password" id="pword2" value="">
+            <br>
+            <br>
+            <input type="submit" value="Confirmar">
+        </form>
+        <p id="Text" style="display: none;">Text</p>
+        <ul class="determinar">
+            <li id="W1" class="det">¿Tiene como minimo 8 caracteres?</li>
+            <li id="W2" class="det">¿Tiene al menos un número?</li>
+            <li id="W3" class="det">¿Tiene al menos una letra mayuscula?</li>
+            <li id="W4" class="det">¿Tiene al menos un caracter especial?</li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
