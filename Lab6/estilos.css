@@ -13,6 +13,18 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    text-align: center;
+}
+
+h5{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
+    text-align: center;
+}
+
 p {
     font-family: 'Viga', sans-serif;
     font-size: 20px;

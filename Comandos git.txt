@@ -1,3 +1,10 @@
 git add -A: Agrega cambios a la transacción
 git commit -m "(comentario en imperativo)": Permite guardar los cambios de la transacción
 git status: Te dice que sucede con tu transacción
+git checkout -b (un nombre): Permite crear una rama y trabajar en ella
+git push origin (un nombre): Permite realizar cambios en ambos main y una rama. No recomendado porque hace
+un relajo
+git push --set -upstream origin develop
+git checkout main: Volvemos a la version principal
+git merge (un nombre): Toma los commits en el branch y los integra al main
+git branch -D (un nombre): Borra el branch en la computadora
