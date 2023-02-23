@@ -16,7 +16,8 @@ const http = require('http');
 const server = http.createServer((request, response) => {
     console.log(request.url);
     response.setHeader('Content-Type', 'text/html');
-    response.write("<h1>Chilaquiles 4k</h1>");
+    response.write("<h1>Amogus</h1>");
+    response.write("ඞඞඞඞඞඞඞඞඞ")
     response.end();
 });
 
