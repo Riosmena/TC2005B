@@ -1,0 +1,19 @@
+{
+  "name": "tc2005b",
+  "version": "1.0.0",
+  "description": "Proyecto de construcción de software",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riosmena/TC2005B.git"
+  },
+  "author": "José Emiliano Riosmena Castañón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Riosmena/TC2005B/issues"
+  },
+  "homepage": "https://github.com/Riosmena/TC2005B#readme"
+}
