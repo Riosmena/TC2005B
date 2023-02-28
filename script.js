@@ -45,10 +45,7 @@ app.use('/hola', (request, response, next) => {
     response.send("Hola desde esta nueva ruta");
 });
 
-app.use('/nuevo', (request, response, next) => {
-    console.log(request.body);
-    console.log(request.body.jugador);
-    
+app.get('/nuevo', (request, response, next) => {
     let html = `
         <form action="nuevo" method="POST">
         <label for="jugador">Nombre del jugador:</label>
@@ -57,7 +54,14 @@ app.use('/nuevo', (request, response, next) => {
         </form>
     `;
     response.send(html);
-})
+});
+
+app.post('/nuevo', (request, response, next) => {
+    console.log(request.body);
+    console.log(request.body.jugador);
+    response.send("El jugador es: " + request.body.jugador);
+});
+
 
 app.use((request, response, next) => {
     console.log("Tercer Middleware");

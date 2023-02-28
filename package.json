@@ -4,6 +4,7 @@
   "description": "Proyecto de Construcción de software",
   "main": "script.js",
   "scripts": {
+    "start": "nodemon script.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
