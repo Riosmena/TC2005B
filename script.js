@@ -1,4 +1,4 @@
-console.log("Hello, World!");
+/*console.log("Hello, World!");
 console.error("This is an error");
 
 const filesystem = require('fs');
@@ -21,4 +21,30 @@ const server = http.createServer((request, response) => {
     response.end();
 });
 
-server.listen(3000);
+server.listen(3000);*/
+
+const express = require('express');
+const app = express();
+
+//Middleware
+app.use((request, response, next) => {
+    console.log('Middleware!');
+    next(); //Le permite a la petición avanzar hacia el siguiente middleware
+});
+
+app.use((request, response, next) => {
+    console.log('Otro middleware!');
+    //response.send('¡Hola mundo!'); //Manda la respuesta
+    next();
+});
+
+app.use('/hola', (request, response, next) => {
+    response.send("Hola desde esta nueva ruta");
+})
+
+app.use((request, response, next) => {
+    console.log("Tercer Middleware");
+    response.send("Hola desde el tercer middleware");
+})
+
+app.listen(3000);
