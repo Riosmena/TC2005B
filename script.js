@@ -27,6 +27,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+
 app.use(bodyParser.urlencoded({extended: false}));
 
 //Middleware
@@ -37,35 +38,24 @@ app.use((request, response, next) => {
 
 app.use((request, response, next) => {
     console.log('Otro middleware!');
-    //response.send('¡Hola mundo!'); //Manda la respuesta
     next();
 });
 
 app.use('/hola', (request, response, next) => {
-    response.send("Hola desde esta nueva ruta");
+    response.send('Hola desde la ruta /hola');
 });
 
-app.get('/nuevo', (request, response, next) => {
-    let html = `
-        <form action="nuevo" method="POST">
-        <label for="jugador">Nombre del jugador:</label>
-        <input type="text" id="jugador" name="jugador">
-        <input type="submit" value="Enviar">
-        </form>
-    `;
-    response.send(html);
-});
+const hockeyRutas = require('./routes/hockey.routes');
 
-app.post('/nuevo', (request, response, next) => {
-    console.log(request.body);
-    console.log(request.body.jugador);
-    response.send("El jugador es: " + request.body.jugador);
-});
-
+app.use('/hockey', hockeyRutas);
 
 app.use((request, response, next) => {
-    console.log("Tercer Middleware");
-    response.send("Hola desde el tercer middleware");
+    console.log("Tercer middleware");
+
+    response.status(404);
+    
+    //Envía la respuesta al cliente
+    response.send('Lo sentimos, esta ruta no existe');
 });
 
 app.listen(3000);
