@@ -24,7 +24,10 @@ const server = http.createServer((request, response) => {
 server.listen(3000);*/
 
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
+app.use(bodyParser.urlencoded({extended: false}));
 
 //Middleware
 app.use((request, response, next) => {
@@ -40,11 +43,25 @@ app.use((request, response, next) => {
 
 app.use('/hola', (request, response, next) => {
     response.send("Hola desde esta nueva ruta");
+});
+
+app.use('/nuevo', (request, response, next) => {
+    console.log(request.body);
+    console.log(request.body.jugador);
+    
+    let html = `
+        <form action="nuevo" method="POST">
+        <label for="jugador">Nombre del jugador:</label>
+        <input type="text" id="jugador" name="jugador">
+        <input type="submit" value="Enviar">
+        </form>
+    `;
+    response.send(html);
 })
 
 app.use((request, response, next) => {
     console.log("Tercer Middleware");
     response.send("Hola desde el tercer middleware");
-})
+});
 
 app.listen(3000);
