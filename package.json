@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Riosmena/TC2005B/issues"
   },
-  "homepage": "https://github.com/Riosmena/TC2005B#readme"
+  "homepage": "https://github.com/Riosmena/TC2005B#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
