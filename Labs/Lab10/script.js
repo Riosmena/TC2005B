@@ -1,4 +1,5 @@
 const http = require('http');
+const file = require('fs');
 const server = http.createServer((request, response) => {
     console.log(request.url);
 
@@ -49,6 +50,7 @@ const server = http.createServer((request, response) => {
             console.log(datosCompletos);
             const tu_auto = datosCompletos.split('&')[0].split('=')[1];
             console.log(tu_auto);
+            file.writeFileSync('file.txt', tu_auto);
             if (tu_auto === "jetta") {
                 response.setHeader('Content-Type', 'text/html');
                 response.write('<!DOCTYPE html>');
