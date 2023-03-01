@@ -19,7 +19,14 @@ app.use("/segundo", (request, response, next) => {
 });
 
 app.use("/tercero", (request, response, next) => {
-    response.send("Haz llegado hasta 3, felicidades");
+    let html = `
+        <h1>Preguntas:</h1>
+        <h5>Describe el archivo package.json</h5>
+        <p>El archivo 'package.json', el cual contiene metadatos descriptivos y funcionales sobre un proyecto
+            y proporciona al administrador de paquetes npm información para ayudar a indentificar 
+            y manejar el proyecto junto con su dependencias añadidas.</p>
+    `;
+    response.send(html);
 });
 
 const autoRuta = require("./routes/autos.routes");
