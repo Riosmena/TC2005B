@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const file = require('fs');
 const router = express.Router();
 
 router.get('/', (request, response, next) => {
