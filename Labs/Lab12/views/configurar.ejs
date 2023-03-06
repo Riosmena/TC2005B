@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+
+    <div class="container">
+        <h1>Configura tu Jeep</h1>
+        <form action="/autos/configurar" method="POST">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="ver" type="text" style=color:white class="validate" name="version">
+                    <label for="ver">Version</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="tone" type="text" style=color:white class="validate" name="color">
+                    <label for="tone">Color</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="name" type="text" style=color:white class="validate" name="nombre">
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="lname" type="text" style=color:white class="validate" name="apellido">
+                    <label for="lname">Apellido</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="corre" type="email" style=color:white class="validate" name="correo">
+                    <label for="corre">Correo electrónico</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="tel" type="text" style=color:white class="validate" name="telefono">
+                    <label for="tel">Teléfono</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="state" type="text" style=color:white class="validate" name="estado">
+                    <label for="state">Estado</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="cot" type="text" style=color:white class="validate" name="cotizacion">
+                    <label for="cot">Tipo de cotización</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Confirmar
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <br><br>
+    </div>
+
+<%- include('includes/foot.ejs') %>

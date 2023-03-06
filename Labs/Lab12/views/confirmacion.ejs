@@ -1,0 +1,26 @@
+<%- include('includes/head.ejs') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+          <div class="card #fffde7 yellow lighten-5">
+            <div class="card-content black-text">
+              <span class="card-title"><%= titulo %></span>
+              <ul>
+                <li><strong>Versión: </strong><%= version %></li>
+                <li><strong>Nombre: </strong><%= nombre %></li>
+                <li><strong>Apellido: </strong><%= apellido %></li>
+                <li><strong>Correo: </strong><%= correo %></li>
+                <li><strong>Teléfono: </strong><%= telefono %></li>
+                <li><strong>Estado: </strong><%= estado %></li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="/autos/configurar">Volver atras</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<%- include('includes/foot.ejs') %>
