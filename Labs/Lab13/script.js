@@ -16,9 +16,9 @@ app.use((request, response, next) => {
     next();
 });
 
-/*const autosRutas = require('./routes/autos.routes');
+const autosRutas = require('./routes/autos.routes');
 
-app.use('/autos', autosRutas);*/
+app.use('/autos', autosRutas);
 
 app.use((request, response, next) => {
     console.log("El middleware final sí esta funcionando");
