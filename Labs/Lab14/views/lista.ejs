@@ -1,0 +1,63 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Autos registrados</h1>
+
+<a href="/autos/configurar" class="button is-link is-rounded">Configurar un auto</a>
+
+<br><br>
+
+<% if (versiones.length > 0) { %>
+    <div class="columns">
+        <% let columns = 0; %>
+        <% for (let version of versiones) { %>
+            <% if (columns % 4 == 0) { %>
+    </div>
+    <div class="columns">
+            <% } %>
+            <% columns++; %>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="<%= version.imagen %>" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="<%= version.imagen %>" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4"><%= version.version %></p>
+                                <p class="subtitle is-6">@<%= version.tipo %></p>
+                            </div>
+                        </div>
+                    
+                        <div class="content">
+                            <%= version.color %> <a><%= version.handle %></a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <h1>No hay autos registradas</h1>
+<% } %>
+
+<br><br>
+
+<% if (ultimo_auto != '') { %>
+    <div class="notification is-link is-light">
+        El último auto registrado fue: <%= ultimo_auto %>
+    </div>
+<% } %>
+
+<a href="/autos/configurar" class="button is-link is-rounded">Configurar un auto</a>
+
+<%- include('includes/foot.ejs') %>
