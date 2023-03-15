@@ -1,0 +1,33 @@
+{
+  "name": "lab18",
+  "version": "1.0.0",
+  "description": "lab18",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Riosmena/TC2005B.git"
+  },
+  "keywords": [
+    "lab18"
+  ],
+  "author": "José Emiliano Riosmena Castañón",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Riosmena/TC2005B/issues"
+  },
+  "homepage": "https://github.com/Riosmena/TC2005B#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.2.0",
+    "nodemon": "^2.0.21"
+  }
+}

@@ -1,0 +1,27 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Configurar tu Jeep Wrangler</h1>
+
+<form action="/autos/configurar" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+
+    <label for="tipo">Tipo:</label>
+    <input required name="tipo" id="tipo" class="input is-rounded" type="text" placeholder="Wrangler">
+    <br><br>
+    <label for="version">Versión:</label>
+    <div class="select is-primary">
+        <select name="version" id="version">
+            <% for (let version of versiones) { %>
+                <option value="<%= version.id %>"><%= version.version %></option>
+            <% } %>
+        </select>
+    </div>
+    <br><br>
+    <label for="color">Color:</label>
+    <input name="color" id="color" class="input is-rounded" type="text" placeholder="Rojo">
+    <br><br>
+    <input class="button is-rounded is-success" type="submit" value="Confirmar">
+
+</form>
+
+<%- include('includes/foot.ejs') %>
