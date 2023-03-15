@@ -1,0 +1,19 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Regístrate</h1>
+
+<form action="/users/signup" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+    <label for="nombre">Nombre:</label>
+    <input required name="nombre" id="nombre" class="input is-rounded" type="text" placeholder="José Emiliano Riosmena Castañón">
+    <br><br>
+    <label for="username">Username:</label>
+    <input name="username" id="username" class="input is-rounded" type="text" placeholder="José">
+    <br><br>
+    <label for="password">Contraseña:</label>
+    <input name="password" id="password" class="input is-rounded" type="password">
+    <br><br>
+    <input class="button is-rounded is-success" type="submit" value="Registrar">
+</form>
+
+<%- include('includes/foot.ejs') %>
