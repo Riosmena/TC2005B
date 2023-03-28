@@ -1,0 +1,139 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Autos registrados</h1>
+
+<% if (privilegios.indexOf('crear_autos') >= 0) { %>
+    <a href="/autos/configurar" class="button is-link is-rounded">Configurar un auto</a>
+<% } %>
+
+<br><br>
+
+<% if (mensaje != '') { %>
+    <div class="notification is-info is-light">
+        <%= mensaje %>
+    </div>
+<% } %>
+
+<label for="buscar">Buscar: </label>
+<input class="input is-medium" type="text" name="buscar" id="buscar">
+<br><br>
+
+<div id="resultados">
+<% if (versiones.length > 0) { %>
+    <div class="columns">
+        <% let columns = 0; %>
+        <% for (let version of versiones) { %>
+            <% if (columns % 4 == 0) { %>
+    </div>
+    <div class="columns">
+            <% } %>
+            <% columns++; %>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="/uploads/<%= version.imagen %>" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="/uploads/<%= version.imagen %>" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4"><%= version.version %></p>
+                                <p class="subtitle is-6">@<%= version.tipo %></p>
+                            </div>
+                        </div>
+                    
+                        <div class="content">
+                            <%= version.color %> <a><%= version.handle %></a>.
+                            <a href="#">#css</a> <a href="#">#responsive</a>
+                            <br>
+                            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <h1>No hay autos registradas</h1>
+<% } %>
+</div>
+<br><br>
+
+<% if (ultimo_auto != '') { %>
+    <div class="notification is-link is-light">
+        El último auto registrado fue: <%= ultimo_auto %>
+    </div>
+<% } %>
+
+<script>
+    document.getElementById("buscar").onkeyup = () => {
+        //función que manda la petición asíncrona
+        const valor_busqueda = document.getElementById("buscar").value;
+        console.log(valor_busqueda);
+        fetch('/autos/buscar/' + valor_busqueda, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(result => {
+            return result.json(); //Regresa otra promesa
+        }).then(data => {
+            //Modificamos el DOM de nuestra página de acuerdo a los datos de la segunda promesa
+            console.log(data.autos);
+            let respuesta = "";
+            if (data.autos.length > 0) { 
+                respuesta += '<div class="columns">';
+                let columns = 0;
+                for (let version of data.autos) { 
+                    if (columns % 4 == 0) {
+                        respuesta += '</div>';
+                        respuesta += '<div class="columns">';
+                    }
+                    columns++;
+                    respuesta += '<div class="column">';
+                        respuesta += '<div class="card">';
+                            respuesta += '<div class="card-image">';
+                                respuesta += '<figure class="image is-4by3">';
+                                    respuesta += '<img src="/uploads/' + version.imagen +'" alt="Placeholder image">';
+                                respuesta += '</figure>';
+                            respuesta += '</div>';
+                            respuesta += '<div class="card-content">';
+                                respuesta += '<div class="media">';
+                                    respuesta += '<div class="media-left">';
+                                        respuesta += '<figure class="image is-48x48">';
+                                            respuesta += '<img src="/uploads/' + version.imagen + '" alt="Placeholder image">';
+                                        respuesta += '</figure>';
+                                    respuesta += '</div>';
+                                    respuesta += '<div class="media-content">';
+                                        respuesta += '<p class="title is-4">' + version.version + '</p>';
+                                        respuesta += '<p class="subtitle is-6">@' + version.tipo + '</p>';
+                                    respuesta += '</div>';
+                                respuesta += '</div>';
+                                respuesta += '<div class="content">';
+                                    respuesta += version.color + '. ';
+                                    respuesta += '<a href="#">#css</a> <a href="#">#responsive</a>';
+                                    respuesta += '<br>';
+                                    respuesta += '<time datetime="' + version.created_at + '">' + version.created_at + '</time>';
+                                respuesta += '</div>';
+                            respuesta += '</div>';
+                        respuesta += '</div>';
+                    respuesta += '</div>';
+                } 
+            respuesta += '</div>';
+            } else { 
+                respuesta += '<h1>No hay perros registrados</h1>';
+            }   
+            document.getElementById("resultados").innerHTML = respuesta;
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+</script>
+
+<%- include('includes/foot.ejs') %>
